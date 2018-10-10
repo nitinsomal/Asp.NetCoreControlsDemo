@@ -1,0 +1,20 @@
+﻿
+@model IEnumerable<Asp.NetCoreControlsDemo.UI.Models.LookUpMeetingRoom>
+
+@{
+    ViewData["Title"] = "Index";
+
+   
+}
+
+<h2>Index</h2>
+
+@foreach (var MRoom in Model)
+{
+    @MRoom.MeetingRoomIdentity 
+
+
+    <br/>
+    @Html.ActionLink("Delete", "Delete", "GridMVCDemo");
+
+}
