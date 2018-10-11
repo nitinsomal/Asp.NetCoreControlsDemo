@@ -68,7 +68,7 @@ namespace Asp.NetCoreControlsDemo.UI
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=GridMVCDemo}/{action=Index}/{id?}");
+                    template: "{controller=MeetingRoomMaster}/{action=Index}");
             });
 
             

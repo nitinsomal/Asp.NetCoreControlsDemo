@@ -28,7 +28,8 @@ namespace Asp.NetCoreControlsDemo.UI.Repositry
         }
 
         public DbSet<LookUpMeetingRoom> LookUpMeetingRoom { get; set; }
-
+        public DbSet<LookUpBuildingAndFloor> LookUpBuildingAndFloor { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

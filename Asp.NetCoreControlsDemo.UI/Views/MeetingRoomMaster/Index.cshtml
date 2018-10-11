@@ -1,0 +1,52 @@
+﻿
+@model Asp.NetCoreControlsDemo.UI.Models.LookUpBuildingAndFloor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title> Meeting Room Master</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>   
+    <script>
+
+        $(function () {
+            $("#ddlBuilding").change(function () {
+
+                var url = '@Url.Content("~/")' + "MeetingRoomMaster/MeetingRoomDetail";
+                var source = $("#ddlBuilding");
+                               
+                $.getJSON(url, { id: $("#ddlBuilding").val() }, function (data) {
+
+                var item = '';
+
+                    $("#ddlMeetingRoom").empty();
+
+                    $.each(data, function (i, row) {
+
+                        item += "<option value='" + i + "'>" + row.text + "</option>";
+
+                    });
+
+                    $("#ddlMeetingRoom").html = item;
+                    
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <label asp-for="BuildingFloorName" title="Please select Buliding">Building * </label>
+    <select id="ddlBuilding" style="height:auto;width:200px" asp-for="BuildingFloorId" asp-items="@(new SelectList(@ViewBag.LookUpBuildingAndFloor,"BuildingFloorId","BuildingFloorName"))"></select>
+
+
+    <label>Meeting Room</label>
+    <select id="ddlMeetingRoom" asp-items="@(new SelectList(string.Empty))"></select>
+
+</body>
+</html>
